@@ -18,6 +18,6 @@ class ProfileController extends Controller
     public function store(ProfileStoreRequest $request)
     {
         $request->user()->update($request->only('name', 'email'));
-        return back();
+        return back()->withSuccess('Profile has been updated');
     }
 }

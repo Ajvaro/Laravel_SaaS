@@ -26,6 +26,7 @@
 
     <main class="py-4">
         <div class="container">
+            @include('layouts.partials.alerts.alerts')
             @yield('content')
         </div>
     </main>

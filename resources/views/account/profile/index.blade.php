@@ -16,7 +16,7 @@
                                    name="name"
                                    class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                    value="{{ old('name', auth()->user()->name) }}">
-                            @if ($errors->has('email'))
+                            @if ($errors->has('name'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('name') }}</strong>
                                 </span>
