@@ -53,4 +53,5 @@ class LoginController extends Controller
 
         return back()->withError('Your account is not active');
     }
+
 }

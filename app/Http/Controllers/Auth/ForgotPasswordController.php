@@ -29,4 +29,7 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected $redirectTo = '/dashboard';
+
 }
