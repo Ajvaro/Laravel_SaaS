@@ -11,4 +11,11 @@ class SubscriptionResumeController extends Controller
     {
         return view('account.subscriptions.resume.index');
     }
+
+    public function store(Request $request)
+    {
+        $request->user()->subscription('primary')->resume();
+
+        return redirect()->route('account.index')->withSuccess('Your subscription has been updated.');
+    }
 }
