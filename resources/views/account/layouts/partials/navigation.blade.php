@@ -35,5 +35,11 @@
            class="list-group-item list-group-item-action {{ return_if(on_page('account/subscription/card'), 'active')}}">
             Update Card
         </a>
+        @teamsubscription
+        <a href="{{ route('account.subscription.team.index')}}"
+           class="list-group-item list-group-item-action {{ return_if(on_page('account/subscription/team'), 'active')}}">
+            Manage Team
+        </a>
+        @endteamsubscription
     </div>
 @endsubscribed

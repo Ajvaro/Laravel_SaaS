@@ -8,6 +8,22 @@ trait HasSubscriptions
     /**
      * @return mixed
      */
+    public function hasTeamSubscription()
+    {
+        return $this->plan->isForTeams();
+    }
+
+    /**
+     * @return bool
+     */
+    public function doesNotHaveTeamSubscription()
+    {
+        return !$this->hasTeamSubscription();
+    }
+
+    /**
+     * @return mixed
+     */
     public function hasSubscription()
     {
         return $this->subscribed('primary');
@@ -37,6 +53,9 @@ trait HasSubscriptions
         return !$this->hasCancelled();
     }
 
+    /**
+     * @return mixed
+     */
     public function isCustomer()
     {
         return $this->hasStripeId();
