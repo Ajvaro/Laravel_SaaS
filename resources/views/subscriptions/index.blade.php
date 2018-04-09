@@ -13,7 +13,7 @@
                         <div class="form-group row">
                             <label for="plan" class="col-md-3">Plan</label>
                             <div class="col-md-6">
-                                <select name="plan" id="plan" class="form-control">
+                                <select name="plan" id="plan" class="form-control{{ $errors->has('plan') ? ' is-invalid' : '' }}">
                                     @foreach($plans as $plan)
                                         <option value="{{ $plan->gateway_id }}"
                                                 {{ request('plan') === $plan->slug || old('plan') === $plan->gateway_id  ? 'selected' : ''}}>

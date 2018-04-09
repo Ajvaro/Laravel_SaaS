@@ -14,6 +14,7 @@
 </div>
 
 @subscribed
+    @notpiggybacksubscription
     <div class="list-group mt-3">
         @subscriptionnotcancelled
             <a href="{{ route('account.subscription.swap.index') }}"
@@ -42,4 +43,5 @@
         </a>
         @endteamsubscription
     </div>
+    @endnotpiggybacksubscription
 @endsubscribed

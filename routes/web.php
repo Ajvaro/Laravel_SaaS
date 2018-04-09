@@ -32,7 +32,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
     /**
      * Subscription
      */
-    Route::group(['prefix' => 'subscription', 'namespace' => 'Subscription'], function() {
+    Route::group(['prefix' => 'subscription', 'namespace' => 'Subscription', 'middleware' => ['subscription.owner']], function() {
 
         /**
          * Cancel
@@ -47,6 +47,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
          */
         Route::group(['middleware' => 'subscription.notcancelled'], function() {
             Route::get('/swap', 'SubscriptionSwapController@index')->name('subscription.swap.index');
+            Route::post('/swap', 'SubscriptionSwapController@store')->name('subscription.swap.store');
         });
 
         /**
