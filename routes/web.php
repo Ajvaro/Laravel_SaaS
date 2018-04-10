@@ -11,6 +11,7 @@ Route::group(['middleware' => ['auth', 'subscription.active']], function(){
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
+
 /**
  * Account
  */
@@ -34,6 +35,15 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
      */
     Route::get('/deactivate', 'DeactivateController@index')->name('deactivate.index');
     Route::post('/deactivate', 'DeactivateController@store')->name('deactivate.store');
+
+    /**
+     * Two Factor Auth
+     */
+    Route::group([], function() {
+        Route::get('/twofactor', 'TwoFactorController@index')->name('twofactor.index');
+        Route::post('/twofactor', 'TwoFactorController@store')->name('twofactor.store');
+        Route::post('/twofactor/verify', 'TwoFactorController@verify')->name('twofactor.verify');
+    });
 
     /**
      * Subscription
