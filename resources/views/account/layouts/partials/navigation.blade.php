@@ -11,6 +11,10 @@
        class="list-group-item list-group-item-action {{ return_if(on_page('account/password'), 'active')}}">
         Change Password
     </a>
+    <a href="{{ route('account.deactivate.index') }}"
+       class="list-group-item list-group-item-action {{ return_if(on_page('account/deactivate'), 'active')}}">
+        Deactivate Account
+    </a>
 </div>
 
 @subscribed

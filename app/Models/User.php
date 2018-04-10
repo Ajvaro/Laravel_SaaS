@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\traits\HasSubscriptions;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\traits\HasConfirmationTokens;
@@ -14,7 +15,8 @@ class User extends Authenticatable
     use Notifiable,
         HasConfirmationTokens,
         Billable,
-        HasSubscriptions;
+        HasSubscriptions,
+        SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
