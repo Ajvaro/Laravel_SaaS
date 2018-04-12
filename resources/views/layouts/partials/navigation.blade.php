@@ -25,6 +25,19 @@
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @else
+                    @impersonating
+                        <li>
+                            <a
+                                    href="#"
+                                    class="nav-link text-danger"
+                                    onclick="event.preventDefault();document.getElementById('impersonate').submit()">Stop Impersonating</a>
+
+                            <form action="{{ route('admin.impersonate.destroy') }}" method="POST" id="impersonate">
+                                {{ csrf_field() }}
+                                @method('DELETE')
+                            </form>
+                        </li>
+                    @endimpersonating
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>

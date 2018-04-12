@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\traits\HasRoles;
 use App\Models\traits\HasSubscriptions;
 use App\Models\traits\HasTwoFactorAuthentication;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,7 +19,8 @@ class User extends Authenticatable
         Billable,
         HasSubscriptions,
         SoftDeletes,
-        HasTwoFactorAuthentication;
+        HasTwoFactorAuthentication,
+        HasRoles;
 
     /**
      * The attributes that are mass assignable.

@@ -37,6 +37,14 @@ class BladeServiceProvider extends ServiceProvider
         Blade::if('notpiggybacksubscription', function() {
             return !auth()->user()->hasPiggybackSubscription();
         });
+
+        Blade::if('admin', function() {
+            return auth()->user()->hasRole('admin');
+        });
+
+        Blade::if('impersonating', function() {
+            return session()->has('impersonate');
+        });
     }
 
     /**

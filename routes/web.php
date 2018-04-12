@@ -4,6 +4,14 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'],  function(){
+    Route::get('/impersonate', 'ImpersonateController@index')->name('index');
+    Route::post('/impersonate', 'ImpersonateController@start')->name('impersonate.start');
+});
+
+Route::delete('/admin/impersonate', 'Admin\\ImpersonateController@destroy')->name('admin.impersonate.destroy');
+
+
 /**
  * Dashboard
  */
@@ -11,6 +19,9 @@ Route::group(['middleware' => ['auth', 'subscription.active']], function(){
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
+/**
+ * Login with Two Factor Authentication
+ */
 Route::group(['middleware' => 'guest'], function() {
    Route::get('/login/twofactor', 'Auth\\TwoFactorLoginController@index')->name('login.twofactor.index');
    Route::post('/login/twofactor', 'Auth\\TwoFactorLoginController@verify')->name('login.twofactor.verify');
