@@ -47,11 +47,32 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
+
+
+        if($user->twoFactorEnabled()) {
+            return $this->startTwoFactorAuthentication($request, $user);
+        }
+
+
         if($user->hasNotActivated()) {
             $this->guard()->logout();
         }
 
         return back()->withError('Your account is not active');
+
+    }
+
+
+    protected function startTwoFactorAuthentication(Request $request, $user)
+    {
+        session()->put('twofactor', (object) [
+            'user_id' => $user->id,
+            'remember' => $request->has('remember')
+        ]);
+
+        $this->guard()->logout();
+
+        return redirect()->route('login.twofactor.index');
     }
 
 }

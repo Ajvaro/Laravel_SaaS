@@ -11,6 +11,9 @@ use App\Http\Controllers\Controller;
 
 class TwoFactorController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $countries = Country::get();
@@ -19,6 +22,11 @@ class TwoFactorController extends Controller
     }
 
 
+    /**
+     * @param TwoFactorStoreRequest $request
+     * @param TwoFactor $twoFactor
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(TwoFactorStoreRequest $request, TwoFactor $twoFactor)
     {
         $user = $request->user();
@@ -38,11 +46,34 @@ class TwoFactorController extends Controller
         return back();
     }
 
+    /**
+     * @param TwoFactorVerifyRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function verify(TwoFactorVerifyRequest $request)
     {
         $request->user()->twoFactor->update([
            'verified' => true
         ]);
+
+        return back();
+    }
+
+
+    /**
+     * @param Request $request
+     * @param TwoFactor $twoFactor
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Request $request, TwoFactor $twoFactor)
+    {
+        $user = $request->user();
+
+        if($twoFactor->delete($user)) {
+            $user->twoFactor()->delete();
+        }
+
+        $request->user()->twoFactor()->delete();
 
         return back();
     }

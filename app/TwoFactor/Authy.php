@@ -69,6 +69,20 @@ class Authy implements TwoFactor
 
     public function delete(User $user)
     {
-        // TODO: Implement delete() method.
+        try {
+
+            $response = $this->client->request(
+                'POST',
+                'https://api.authy.com/protected/json/users/delete/'. $user->twoFactor->identifier . '?api_key=' . config('services.authy.secret')
+            );
+
+        } catch(Exception $e) {
+
+            return false;
+
+        }
+
+        return true;
+
     }
 }
