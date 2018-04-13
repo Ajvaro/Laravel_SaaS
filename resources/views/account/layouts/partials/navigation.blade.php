@@ -19,6 +19,11 @@
        class="list-group-item list-group-item-action {{ return_if(on_page('account/deactivate'), 'active')}}">
         Deactivate Account
     </a>
+    <a href="{{ route('account.token.index') }}"
+       class="list-group-item list-group-item-action {{ return_if(on_page('account/tokens'), 'active')}}">
+        API Tokens
+    </a>
+
 </div>
 
 @subscribed

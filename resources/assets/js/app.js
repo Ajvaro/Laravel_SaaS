@@ -7,7 +7,7 @@
 
 require('./bootstrap');
 
-// window.Vue = require('vue');
+window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +15,9 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
+Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
+
+const app = new Vue({
+    el: '#app'
+});

@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 
 class PlanController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $plans = Plan::active()->forUsers()->get();
