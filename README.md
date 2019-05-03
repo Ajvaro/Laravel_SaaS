@@ -1,4 +1,10 @@
-Laravel SaaS 
+<p align="center">
+    <img title="Laravel" height="150"  src="https://raw.githubusercontent.com/Ajvaro/fileforrest/master/public/images/laravel_logo.png" />
+    <img title="React" height="150"  src="https://raw.githubusercontent.com/Ajvaro/fileforrest/master/public/images/React.js_logo.png" />
+</p>
+
+-----
+##Laravel SaaS 
 
 - Customized registration with account activation email
 - Two factor authentication with Authy
@@ -6,3 +12,5 @@ Laravel SaaS
 - Team subscriptions
 - Admin User Impersonation
 - Passport API routes protection
+
+-----
