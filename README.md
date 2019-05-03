@@ -34,6 +34,6 @@ and application key
 
 ``` php artisan key:generate ```
 
-Set your database login details and run
+Set your database login details, services keys, and run
 
 ``` php artisan migrate:fresh --seed ```
